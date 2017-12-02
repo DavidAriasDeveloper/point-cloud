@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/david/Projects/c/cuda/point-cloud/cpu
+CMAKE_SOURCE_DIR = /home/david/Proyectos/c/cuda/point-cloud/cpu
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/david/Projects/c/cuda/point-cloud/cpu
+CMAKE_BINARY_DIR = /home/david/Proyectos/c/cuda/point-cloud/cpu
 
 # Include any dependencies generated for this target.
 include CMakeFiles/point_cloud.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/point_cloud.dir/flags.make
 
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: CMakeFiles/point_cloud.dir/flags.make
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: point_cloud.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/david/Projects/c/cuda/point-cloud/cpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/point_cloud.dir/point_cloud.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/point_cloud.dir/point_cloud.cpp.o -c /home/david/Projects/c/cuda/point-cloud/cpu/point_cloud.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/david/Proyectos/c/cuda/point-cloud/cpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/point_cloud.dir/point_cloud.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/point_cloud.dir/point_cloud.cpp.o -c /home/david/Proyectos/c/cuda/point-cloud/cpu/point_cloud.cpp
 
 CMakeFiles/point_cloud.dir/point_cloud.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/point_cloud.dir/point_cloud.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/david/Projects/c/cuda/point-cloud/cpu/point_cloud.cpp > CMakeFiles/point_cloud.dir/point_cloud.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/david/Proyectos/c/cuda/point-cloud/cpu/point_cloud.cpp > CMakeFiles/point_cloud.dir/point_cloud.cpp.i
 
 CMakeFiles/point_cloud.dir/point_cloud.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/point_cloud.dir/point_cloud.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/david/Projects/c/cuda/point-cloud/cpu/point_cloud.cpp -o CMakeFiles/point_cloud.dir/point_cloud.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/david/Proyectos/c/cuda/point-cloud/cpu/point_cloud.cpp -o CMakeFiles/point_cloud.dir/point_cloud.cpp.s
 
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o.requires:
 
@@ -90,39 +90,25 @@ point_cloud_EXTERNAL_OBJECTS =
 
 point_cloud: CMakeFiles/point_cloud.dir/point_cloud.cpp.o
 point_cloud: CMakeFiles/point_cloud.dir/build.make
-point_cloud: /usr/lib/x86_64-linux-gnu/libcudart_static.a
-point_cloud: /usr/lib/x86_64-linux-gnu/librt.so
-point_cloud: /usr/local/lib/libopencv_cudabgsegm.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudaobjdetect.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudastereo.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_shape.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_stitching.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_superres.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_videostab.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_viz.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudafeatures2d.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudacodec.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudaoptflow.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudalegacy.so.3.2.0
+point_cloud: /usr/local/lib/libopencv_objdetect.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_calib3d.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudawarping.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_features2d.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_flann.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_objdetect.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_highgui.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_ml.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_photo.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudaimgproc.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudafilters.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudaarithm.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_video.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_videoio.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_imgcodecs.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_imgproc.so.3.2.0
 point_cloud: /usr/local/lib/libopencv_core.so.3.2.0
-point_cloud: /usr/local/lib/libopencv_cudev.so.3.2.0
 point_cloud: CMakeFiles/point_cloud.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/david/Projects/c/cuda/point-cloud/cpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable point_cloud"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/david/Proyectos/c/cuda/point-cloud/cpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable point_cloud"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/point_cloud.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -139,6 +125,6 @@ CMakeFiles/point_cloud.dir/clean:
 .PHONY : CMakeFiles/point_cloud.dir/clean
 
 CMakeFiles/point_cloud.dir/depend:
-	cd /home/david/Projects/c/cuda/point-cloud/cpu && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/david/Projects/c/cuda/point-cloud/cpu /home/david/Projects/c/cuda/point-cloud/cpu /home/david/Projects/c/cuda/point-cloud/cpu /home/david/Projects/c/cuda/point-cloud/cpu /home/david/Projects/c/cuda/point-cloud/cpu/CMakeFiles/point_cloud.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/david/Proyectos/c/cuda/point-cloud/cpu && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/david/Proyectos/c/cuda/point-cloud/cpu /home/david/Proyectos/c/cuda/point-cloud/cpu /home/david/Proyectos/c/cuda/point-cloud/cpu /home/david/Proyectos/c/cuda/point-cloud/cpu /home/david/Proyectos/c/cuda/point-cloud/cpu/CMakeFiles/point_cloud.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/point_cloud.dir/depend
 

@@ -2,7 +2,6 @@
  *
  *  Generacion de nube de puntos a traves de imagenes estereoscopicas version CPU
  *  Por: Luis David Arias Manjarrez
- *  Adaptacion de: Victor  Eruhimov
  *
  */
 
@@ -13,74 +12,26 @@
 #include "opencv2/core/utility.hpp"
 
 #include <stdio.h>
-#include <fstream>
 #include <iostream>
 
 using namespace cv;
 using namespace std;
 
-void writeMatToFile(cv::Mat& m, const char* filename)
-{
-    ofstream fout(filename);
 
-    if(!fout)
-    {
-        std::cout<<"File Not Opened"<<std::endl;  return;
-    }
-
-    for(int i=0; i<m.rows; i++)
-    {
-        for(int j=0; j<m.cols; j++)
-        {
-            fout<<m.at<float>(i,j)<<"\t";
-        }
-        fout<<std::endl;
-    }
-
-    fout.close();
-}
-
-void save(const Mat& image3D, const std::string& fileName)
-{
-	CV_Assert(image3D.type() == CV_32FC3 && !image3D.empty());
-	CV_Assert(!fileName.empty());
-
-	std::ofstream outFile(fileName);
-
-	if (!outFile.is_open())
-	{
-		std::cout << "ERROR: Could not open " << fileName << std::endl;
-		return;
-	}
-
-	for (int i = 0; i < image3D.rows; i++)
-	{
-		const cv::Vec3f* image3D_ptr = image3D.ptr<cv::Vec3f>(i);
-
-		for (int j = 0; j < image3D.cols; j++)
-		{
-			outFile << image3D_ptr[j][0] << " " << image3D_ptr[j][1] << " " << image3D_ptr[j][2] << std::endl;
-		}
-	}
-
-	outFile.close();
-}
-
-static void saveXYZ(const char* filename, const Mat& mat)
-{
-    float value = mat.at<float>(100,100);
-
-    printf("%fn", value);
-
+static void saveXYZ(const char* filename, const Mat& points, const Mat& colors)
+{   
     const double max_z = 1.0e4;
-    FILE* fp = fopen(filename, "wt");
-    for(int y = 0; y < mat.rows; y++)
+    FILE* fp = fopen(filename, "wb");
+    fprintf(fp, "ply\nformat ascii 1.0\nelement vertex %d\nproperty float x\nproperty float y\nproperty float z\nproperty uchar red\nproperty uchar green\nproperty uchar blue\nend_header\n",
+        points.rows*points.cols);
+    for(int y = 0; y < points.rows; y++)
     {
-        for(int x = 0; x < mat.cols; x++)
+        for(int x = 0; x < points.cols; x++)
         {
-          Vec3f point = mat.at<Vec3f>(y, x);
+          Vec3f point = points.at<Vec3f>(y, x);
+          Vec3b color = colors.at<Vec3b>(y, x);
           if(fabs(point[2] - max_z) < FLT_EPSILON || fabs(point[2]) > max_z) continue;
-          //fprintf(fp, "%f %f %f\n", point[0], point[1], point[2]);
+          fprintf(fp, "%f %f %f %d %d %d\n", point[0], point[1], point[2],color[0],color[1],color[2]);
         }
     }
     fclose(fp);
@@ -159,7 +110,7 @@ int main(int argc, char** argv)
     // sgbm->setUniquenessRatio(10);
     // sgbm->setSpeckleWindowSize(100);
     // sgbm->setSpeckleRange(32);
-
+    /*
     Mat Q = cv::Mat(4,4,CV_32F);
     Q.at<double>(0,0)=1.0;
     Q.at<double>(0,1)=0.0;
@@ -177,21 +128,29 @@ int main(int argc, char** argv)
     Q.at<double>(3,1)=0.0;
     Q.at<double>(3,2)=1.0;    //1.0/BaseLine
     Q.at<double>(3,3)=0.0;    //cx - cx'
+*/
+    Matx44d Q = cv::Matx44d(    
+        1.0, 0.0, 0.0, -0.5*width,
+        0.0, -1.0, 0.0, 0.5*height,
+        0.0, 0.0, 0.0, -1.0*f,
+        0.0, 0.0, 1.0, 0/*(CX - CX) / baseLine*/
+    );
 
-    Mat disp, disp8;
+    Mat disp8;
+    Mat disparity(imgLeft.size(), CV_32F);
 
     int64 t = getTickCount();
-    sgbm->compute(imgLeft, imgRight, disp);
+    sgbm->compute(imgLeft, imgRight, disparity);
 
     t = getTickCount() - t;
     printf("Time elapsed: %fms\n", t*1000/getTickFrequency());
 
-    disp.convertTo(disp8, CV_8U, 255/(numberOfDisparities*16.));
+    disparity.convertTo(disp8, CV_8U, 255/(numberOfDisparities*16.));
 
     if( !no_display )
     {
-        namedWindow("left", 1);
-        imshow("left", imgLeft);
+        //namedWindow("left", 1);
+        //imshow("left", imgLeft);
         namedWindow("disparity", 0);
         imshow("disparity", disp8);
         printf("Presione una tecla para continuar...");
@@ -206,13 +165,14 @@ int main(int argc, char** argv)
 
     if(!point_cloud_filename.empty())
     {
-        printf("storing the point cloud...");
+        printf("Generando nube de puntos...");
         fflush(stdout);
-        Mat xyz;
-        reprojectImageTo3D(disp8, xyz, Q);
         
-        writeMatToFile(mask,"test.txt");
-        //saveXYZ(point_cloud_filename.c_str(), xyz);
+        Mat xyz,colors;
+        reprojectImageTo3D(disp8, xyz, Q);
+        cvtColor(imgLeft,colors, COLOR_BGR2RGB);
+
+        saveXYZ(point_cloud_filename.c_str(), xyz, colors);
 
         printf("\n");
     }

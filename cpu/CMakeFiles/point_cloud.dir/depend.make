@@ -34,16 +34,6 @@ CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/core/ty
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/core/types_c.h
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/core/utility.hpp
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/core/version.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudaarithm.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudabgsegm.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudacodec.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudafeatures2d.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudafilters.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudaimgproc.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudaobjdetect.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudaoptflow.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudastereo.hpp
-CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/cudawarping.hpp
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/features2d.hpp
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/flann.hpp
 CMakeFiles/point_cloud.dir/point_cloud.cpp.o: /usr/local/include/opencv2/flann/all_indices.h

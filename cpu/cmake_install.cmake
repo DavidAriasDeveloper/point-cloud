@@ -1,4 +1,4 @@
-# Install script for directory: /home/david/Projects/c/cuda/point-cloud/cpu
+# Install script for directory: /home/david/Proyectos/c/cuda/point-cloud/cpu
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/david/Projects/c/cuda/point-cloud/cpu/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/david/Proyectos/c/cuda/point-cloud/cpu/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
