@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 2.8)
+set (CMAKE_CXX_STANDARD 11)
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+file(GLOB hdr *.hpp *.h)
+SET(point_cloud_files point_cloud.cpp)
+CUDA_ADD_EXECUTABLE(point_cloud ${point_cloud_files} ${hdr} ${cu})
+target_link_libraries(point_cloud ${OpenCV_LIBS})
