@@ -110,25 +110,7 @@ int main(int argc, char** argv)
     // sgbm->setUniquenessRatio(10);
     // sgbm->setSpeckleWindowSize(100);
     // sgbm->setSpeckleRange(32);
-    /*
-    Mat Q = cv::Mat(4,4,CV_32F);
-    Q.at<double>(0,0)=1.0;
-    Q.at<double>(0,1)=0.0;
-    Q.at<double>(0,2)=0.0;
-    Q.at<double>(0,3)=-0.5*width; //cx
-    Q.at<double>(1,0)=0.0;
-    Q.at<double>(1,1)=-1.0;
-    Q.at<double>(1,2)=0.0;
-    Q.at<double>(1,3)=0.5*height;  //cy
-    Q.at<double>(2,0)=0.0;
-    Q.at<double>(2,1)=0.0;
-    Q.at<double>(2,2)=0.0;
-    Q.at<double>(2,3)=-1.0*f;  //Focal
-    Q.at<double>(3,0)=0.0;
-    Q.at<double>(3,1)=0.0;
-    Q.at<double>(3,2)=1.0;    //1.0/BaseLine
-    Q.at<double>(3,3)=0.0;    //cx - cx'
-*/
+
     Matx44d Q = cv::Matx44d(    
         1.0, 0.0, 0.0, -0.5*width,
         0.0, -1.0, 0.0, 0.5*height,
@@ -136,7 +118,7 @@ int main(int argc, char** argv)
         0.0, 0.0, 1.0, 0/*(CX - CX) / baseLine*/
     );
 
-    Mat disp8;
+    Mat disp8(imgLeft.size(), CV_8U);
     Mat disparity(imgLeft.size(), CV_32F);
 
     int64 t = getTickCount();

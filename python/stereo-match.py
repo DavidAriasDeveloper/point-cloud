@@ -64,10 +64,10 @@ if __name__ == '__main__':
 
     print('Generando nube de puntos 3D...',)
     h, w = imgL.shape[:2]
-    f = 0.8*w                          # Suposicion de distancia focal
+    f = 0.8*w                         
     Q = np.float32([[1, 0, 0, -0.5*w],
-                    [0,-1, 0,  0.5*h], # turn points 180 deg around x-axis,
-                    [0, 0, 0,     -f], # so that y-axis looks up
+                    [0,-1, 0,  0.5*h],
+                    [0, 0, 0,     -f],
                     [0, 0, 1,      0]])
     points = cv2.reprojectImageTo3D(disp, Q)
     colors = cv2.cvtColor(imgL, cv2.COLOR_BGR2RGB)
@@ -77,7 +77,7 @@ if __name__ == '__main__':
     out_fn = 'out.ply'
     write_ply('out.ply', out_points, out_colors)
     print('%s almacenado' % 'out.ply')
-
+    cv2.imwrite('aloe_disparity.jpg',disp)
     cv2.imshow('Stereo Left', imgL)
     cv2.imshow('Disparidad', (disp-min_disp)/num_disp)
     cv2.waitKey()

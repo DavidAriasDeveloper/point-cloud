@@ -33,16 +33,7 @@ CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/core/
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/core/types_c.h
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/core/utility.hpp
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/core/version.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudaarithm.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudabgsegm.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudacodec.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudafeatures2d.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudafilters.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudaimgproc.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudaobjdetect.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudaoptflow.hpp
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudastereo.hpp
-CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/cudawarping.hpp
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/features2d.hpp
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/flann.hpp
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: /usr/local/include/opencv2/flann/all_indices.h

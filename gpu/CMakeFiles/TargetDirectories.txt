@@ -1,3 +1,3 @@
-/home/david/Projects/c/cuda/point-cloud/gpu/CMakeFiles/rebuild_cache.dir
-/home/david/Projects/c/cuda/point-cloud/gpu/CMakeFiles/edit_cache.dir
-/home/david/Projects/c/cuda/point-cloud/gpu/CMakeFiles/stereo_match.dir
+/home/david/Proyectos/c/cuda/point-cloud/gpu/CMakeFiles/rebuild_cache.dir
+/home/david/Proyectos/c/cuda/point-cloud/gpu/CMakeFiles/edit_cache.dir
+/home/david/Proyectos/c/cuda/point-cloud/gpu/CMakeFiles/stereo_match.dir

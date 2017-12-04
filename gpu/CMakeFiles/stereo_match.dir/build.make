@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/david/Projects/c/cuda/point-cloud/gpu
+CMAKE_SOURCE_DIR = /home/david/Proyectos/c/cuda/point-cloud/gpu
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/david/Projects/c/cuda/point-cloud/gpu
+CMAKE_BINARY_DIR = /home/david/Proyectos/c/cuda/point-cloud/gpu
 
 # Include any dependencies generated for this target.
 include CMakeFiles/stereo_match.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/stereo_match.dir/flags.make
 
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: CMakeFiles/stereo_match.dir/flags.make
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o: stereo_match.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/david/Projects/c/cuda/point-cloud/gpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/stereo_match.dir/stereo_match.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/stereo_match.dir/stereo_match.cpp.o -c /home/david/Projects/c/cuda/point-cloud/gpu/stereo_match.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/david/Proyectos/c/cuda/point-cloud/gpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/stereo_match.dir/stereo_match.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/stereo_match.dir/stereo_match.cpp.o -c /home/david/Proyectos/c/cuda/point-cloud/gpu/stereo_match.cpp
 
 CMakeFiles/stereo_match.dir/stereo_match.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stereo_match.dir/stereo_match.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/david/Projects/c/cuda/point-cloud/gpu/stereo_match.cpp > CMakeFiles/stereo_match.dir/stereo_match.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/david/Proyectos/c/cuda/point-cloud/gpu/stereo_match.cpp > CMakeFiles/stereo_match.dir/stereo_match.cpp.i
 
 CMakeFiles/stereo_match.dir/stereo_match.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stereo_match.dir/stereo_match.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/david/Projects/c/cuda/point-cloud/gpu/stereo_match.cpp -o CMakeFiles/stereo_match.dir/stereo_match.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/david/Proyectos/c/cuda/point-cloud/gpu/stereo_match.cpp -o CMakeFiles/stereo_match.dir/stereo_match.cpp.s
 
 CMakeFiles/stereo_match.dir/stereo_match.cpp.o.requires:
 
@@ -92,37 +92,25 @@ stereo_match: CMakeFiles/stereo_match.dir/stereo_match.cpp.o
 stereo_match: CMakeFiles/stereo_match.dir/build.make
 stereo_match: /usr/lib/x86_64-linux-gnu/libcudart_static.a
 stereo_match: /usr/lib/x86_64-linux-gnu/librt.so
-stereo_match: /usr/local/lib/libopencv_cudabgsegm.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudaobjdetect.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudastereo.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_shape.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_stitching.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_superres.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_videostab.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_viz.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudafeatures2d.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudacodec.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudaoptflow.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudalegacy.so.3.2.0
+stereo_match: /usr/local/lib/libopencv_objdetect.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_calib3d.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudawarping.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_features2d.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_flann.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_objdetect.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_highgui.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_ml.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_photo.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudaimgproc.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudafilters.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudaarithm.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_video.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_videoio.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_imgcodecs.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_imgproc.so.3.2.0
 stereo_match: /usr/local/lib/libopencv_core.so.3.2.0
-stereo_match: /usr/local/lib/libopencv_cudev.so.3.2.0
 stereo_match: CMakeFiles/stereo_match.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/david/Projects/c/cuda/point-cloud/gpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable stereo_match"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/david/Proyectos/c/cuda/point-cloud/gpu/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable stereo_match"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stereo_match.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -139,6 +127,6 @@ CMakeFiles/stereo_match.dir/clean:
 .PHONY : CMakeFiles/stereo_match.dir/clean
 
 CMakeFiles/stereo_match.dir/depend:
-	cd /home/david/Projects/c/cuda/point-cloud/gpu && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/david/Projects/c/cuda/point-cloud/gpu /home/david/Projects/c/cuda/point-cloud/gpu /home/david/Projects/c/cuda/point-cloud/gpu /home/david/Projects/c/cuda/point-cloud/gpu /home/david/Projects/c/cuda/point-cloud/gpu/CMakeFiles/stereo_match.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/david/Proyectos/c/cuda/point-cloud/gpu && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/david/Proyectos/c/cuda/point-cloud/gpu /home/david/Proyectos/c/cuda/point-cloud/gpu /home/david/Proyectos/c/cuda/point-cloud/gpu /home/david/Proyectos/c/cuda/point-cloud/gpu /home/david/Proyectos/c/cuda/point-cloud/gpu/CMakeFiles/stereo_match.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/stereo_match.dir/depend
 
