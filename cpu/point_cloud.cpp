@@ -19,7 +19,7 @@ using namespace std;
 
 
 static void saveXYZ(const char* filename, const Mat& points, const Mat& colors)
-{   
+{
     const double max_z = 1.0e4;
     FILE* fp = fopen(filename, "wb");
     fprintf(fp, "ply\nformat ascii 1.0\nelement vertex %d\nproperty float x\nproperty float y\nproperty float z\nproperty uchar red\nproperty uchar green\nproperty uchar blue\nend_header\n",
@@ -41,13 +41,10 @@ int main(int argc, char** argv)
 {
     std::string imgLeft_filename = "";
     std::string imgRight_filename = "";
-
-    std::string intrinsic_filename = "";
-    std::string extrinsic_filename = "";
     std::string disparity_filename = "aloe_disparity.jpg";
     std::string point_cloud_filename = "point_cloud.ply";
 
-    int width, height;
+    int width, height, cn;
     double f;
     int windowSize, minDisparity, numberOfDisparities;
     bool no_display = false;
@@ -70,22 +67,29 @@ int main(int argc, char** argv)
         return -1;
     }
 
+    //Lectura de imagenes
     Mat img1 = imread(imgLeft_filename);
     Mat img2 = imread(imgRight_filename);
-
     Mat imgLeft,imgRight;
     pyrDown(img1,imgLeft);
     pyrDown(img2,imgRight);
 
+    //Definicion de parametros
+    Size img_size = imgLeft.size();
     width = imgLeft.cols;
     height = imgLeft.rows;
+    cn = imgLeft.channels();
     windowSize = 3;
     minDisparity = 16;
     numberOfDisparities = 112 - minDisparity;
     f= 0.8 * width;
 
-    int cn = imgLeft.channels();
-    Size img_size = imgLeft.size();
+    Matx44d Q = cv::Matx44d(
+        1.0, 0.0, 0.0, -0.5*width,
+        0.0, -1.0, 0.0, 0.5*height,
+        0.0, 0.0, 0.0, -1.0*f,
+        0.0, 0.0, 1.0, 0/*(CX - CX) / baseLine*/
+    );
 
     Ptr<StereoSGBM> sgbm = StereoSGBM::create(
       minDisparity,
@@ -98,7 +102,7 @@ int main(int argc, char** argv)
       10,
       100,
       32,
-      StereoSGBM::MODE_HH
+      StereoSGBM::MODE_SGBM
     );
 
     // sgbm->setMinDisparity(minDisparity);
@@ -111,20 +115,14 @@ int main(int argc, char** argv)
     // sgbm->setSpeckleWindowSize(100);
     // sgbm->setSpeckleRange(32);
 
-    Matx44d Q = cv::Matx44d(    
-        1.0, 0.0, 0.0, -0.5*width,
-        0.0, -1.0, 0.0, 0.5*height,
-        0.0, 0.0, 0.0, -1.0*f,
-        0.0, 0.0, 1.0, 0/*(CX - CX) / baseLine*/
-    );
-
     Mat disp8(imgLeft.size(), CV_8U);
     Mat disparity(imgLeft.size(), CV_32F);
 
     int64 t = getTickCount();
+    //Calculo de disparidad
     sgbm->compute(imgLeft, imgRight, disparity);
-
     t = getTickCount() - t;
+
     printf("Time elapsed: %fms\n", t*1000/getTickFrequency());
 
     disparity.convertTo(disp8, CV_8U, 255/(numberOfDisparities*16.));
@@ -149,11 +147,12 @@ int main(int argc, char** argv)
     {
         printf("Generando nube de puntos...");
         fflush(stdout);
-        
+        //Matrices de posiciones y colores
         Mat xyz,colors;
+        //Generacion de nube de puntos a partir de mapa de disparidad
         reprojectImageTo3D(disp8, xyz, Q);
         cvtColor(imgLeft,colors, COLOR_BGR2RGB);
-
+        //Exportacion de archivo ply
         saveXYZ(point_cloud_filename.c_str(), xyz, colors);
 
         printf("\n");
