@@ -17,24 +17,38 @@
 using namespace cv;
 using namespace std;
 
-
+//Funcion para escribir fichero .ply
 static void saveXYZ(const char* filename, const Mat& points, const Mat& colors)
 {
-    const double max_z = 1.0e4;
-    FILE* fp = fopen(filename, "wb");
-    fprintf(fp, "ply\nformat ascii 1.0\nelement vertex %d\nproperty float x\nproperty float y\nproperty float z\nproperty uchar red\nproperty uchar green\nproperty uchar blue\nend_header\n",
-        points.rows*points.cols);
-    for(int y = 0; y < points.rows; y++)
-    {
-        for(int x = 0; x < points.cols; x++)
-        {
-          Vec3f point = points.at<Vec3f>(y, x);
-          Vec3b color = colors.at<Vec3b>(y, x);
-          if(fabs(point[2] - max_z) < FLT_EPSILON || fabs(point[2]) > max_z) continue;
-          fprintf(fp, "%f %f %f %d %d %d\n", point[0], point[1], point[2],color[0],color[1],color[2]);
-        }
-    }
-    fclose(fp);
+   const double max_z = 1.0e4;//Maxima profundidad
+   int point_counter = 0;//Contador de puntos procesados
+   ostringstream body;//Cuerpo del fichero .ply
+   ostringstream header;//Encabezado del fichero .ply
+   for(int y = 0; y < points.rows; y++)
+   {
+       for(int x = 0; x < points.cols; x++)
+       {
+         Vec3f point = points.at<Vec3f>(y, x);
+         Vec3b color = colors.at<Vec3b>(y, x);
+         if(fabs(point[2] - max_z) < FLT_EPSILON || fabs(point[2]) > max_z) continue;//Limites de alcance de la proyeccion
+         body<<point[0]<<" "<<point[1]<<" "<<point[2]<<" "<<std::to_string(color[0])<<" "<<std::to_string(color[1])<<" "<<std::to_string(color[2])<<"\n";//Los 3 primeros valores son coordenadas, los 3 ultimos son identificadores de color
+         point_counter++;
+       }
+   }
+   FILE* fp = fopen(filename, "wb");
+   header<<"ply\nformat ascii 1.0\nelement vertex "<<point_counter<<"\nproperty float x\nproperty float y\nproperty float z\nproperty uchar red\nproperty uchar green\nproperty uchar blue\nend_header\n";
+   std::string header_string = header.str();
+   std::string body_string = body.str();
+   //Conversion de compatibilidad para fprintf
+   char* header_char = new char[header_string.length() + 1];
+   char* body_char = new char[body_string.length() + 1];
+
+   copy(header_string.c_str(), header_string.c_str() + header_string.length() + 1, header_char);
+   copy(body_string.c_str(), body_string.c_str() + body_string.length() + 1, body_char);
+
+   fprintf(fp,"%s",header_char);
+   fprintf(fp,"%s",body_char);
+   fclose(fp);
 }
 
 int main(int argc, char** argv)
@@ -122,10 +136,10 @@ int main(int argc, char** argv)
     //Calculo de disparidad
     sgbm->compute(imgLeft, imgRight, disparity);
     t = getTickCount() - t;
-
-    printf("Time elapsed: %fms\n", t*1000/getTickFrequency());
+    printf("CPU: Tiempo transcurrido: %fms\n", t*1000/getTickFrequency());
 
     disparity.convertTo(disp8, CV_8U, 255/(numberOfDisparities*16.));
+
 
     if( !no_display )
     {
