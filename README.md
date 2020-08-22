@@ -8,6 +8,6 @@ Currently, machines require more visual information than was previously required
 
 This project was implemented in C++ and Python to take advantage of OpenCV version on these languages.
 
-![App result: 3D Point Cloud image generated](https://github.com/dvariaz/point-cloud/blob/images/AppArchitecture.jpg?raw=true)
+![App architecture](https://github.com/dvariaz/point-cloud/blob/master/images/AppArchitecture.jpg?raw=true)
 
 [Watch the paper](https://github.com/dvariaz/point-cloud/blob/master/paper.pdf?raw=true)
